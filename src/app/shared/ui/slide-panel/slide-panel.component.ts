@@ -31,5 +31,6 @@ export class SlidePanelComponent {
 
   onClosePanel() {
     this.onClose.emit(false);
+    console.log("testing close")
   }
 }

@@ -2,7 +2,7 @@ import { Component, Input, input } from '@angular/core';
 import { ITodo } from 'src/app/core/models/todo.model';
 
 export type ITodoType = "OPEN" | "PROGRESS" | "TESTING" | "DONE";
-export type ITodoStatus = ["OPEN", "PROGRSS", "TESTING", "DONE"]
+export const ITodoStatus = ["OPEN", "PROGRSS", "TESTING", "DONE"]
 
 @Component({
   selector: 'app-todo-card',

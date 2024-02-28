@@ -5,6 +5,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { MasterComponent } from './shared/layout/master/master.component';
 import { TodoComponent } from './pages/todo/todo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { httpInterceptor } from './core/interceptors/http.interceptor';
 
 const routes: Routes = [
   {
@@ -21,7 +23,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  providers: [importProvidersFrom(BrowserAnimationsModule)],
+  providers: 
+  [ provideHttpClient(withInterceptors([httpInterceptor])),
+    importProvidersFrom(BrowserAnimationsModule)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

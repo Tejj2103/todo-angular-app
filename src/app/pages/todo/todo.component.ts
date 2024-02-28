@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ITodo } from 'src/app/core/models/todo.model';
 import { TodoService } from 'src/app/core/services/todo.service';
-import { TodoCardComponent } from 'src/app/shared/components/todo-card/todo-card.component';
+import { ITodoStatus, TodoCardComponent } from 'src/app/shared/components/todo-card/todo-card.component';
 import { SlidePanelComponent } from 'src/app/shared/ui/slide-panel/slide-panel.component';
 
 @Component({
   selector: 'app-todo',
   standalone: true,
-  imports: [TodoCardComponent, SlidePanelComponent],
+  imports: [TodoCardComponent, SlidePanelComponent, ReactiveFormsModule],
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
   todoForm!: FormGroup;
   todos: ITodo[] = [];
+  todoStatus = ITodoStatus;
   isSlidePanelOpen: boolean = false;
   constructor(private todoService: TodoService, private fb: FormBuilder) {
     this.todoForm = this.fb.group({
@@ -32,7 +33,7 @@ export class TodoComponent implements OnInit {
     this.todos = this.todoService.getAllTodo();
   }
 
-  onCloseSlidePanle()
+  onCloseSlidePanel()
   {
     this.isSlidePanelOpen = false;
   }
@@ -40,6 +41,17 @@ export class TodoComponent implements OnInit {
   openSlidePanel()
   {
     this.isSlidePanelOpen = true;
+  }
+
+  onSubmit()
+  {
+    if(this.todoForm.valid)
+    {
+
+    }else
+    {
+      this.todoForm.markAllAsTouched();
+    }
   }
 }
 
