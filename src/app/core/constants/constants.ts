@@ -3,13 +3,13 @@ export const constants =
     CURRENT_TOKEN: "CURRENT_TOKEN"
 }
 
-const apiUrl = "http://localhost:5000/api"
+const apiUrl = "http://localhost:4000";
 
 export const apiEndpoint =
 {
     AuthEndpoint:
     {
-        login: `${apiUrl}/login`,
+        login: `${apiUrl}/user/login`,
         logout: `${apiUrl}/logout`,
         loggedUser: `${apiUrl}/loggedUser`,
     },

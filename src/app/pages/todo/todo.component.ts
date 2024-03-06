@@ -30,26 +30,25 @@ export class TodoComponent implements OnInit {
   }
 
   getAllTodos() {
-    this.todos = this.todoService.getAllTodo();
+    this.todoService.getAllTodo().subscribe({
+      next: (response) => {
+        this.todos = response.data;
+      }
+    });
   }
 
-  onCloseSlidePanel()
-  {
+  onCloseSlidePanel() {
     this.isSlidePanelOpen = false;
   }
 
-  openSlidePanel()
-  {
+  openSlidePanel() {
     this.isSlidePanelOpen = true;
   }
 
-  onSubmit()
-  {
-    if(this.todoForm.valid)
-    {
+  onSubmit() {
+    if (this.todoForm.valid) {
 
-    }else
-    {
+    } else {
       this.todoForm.markAllAsTouched();
     }
   }

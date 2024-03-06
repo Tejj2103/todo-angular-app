@@ -7,16 +7,20 @@ import { TodoComponent } from './pages/todo/todo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { httpInterceptor } from './core/interceptors/http.interceptor';
+import { guestGuard } from './core/guards/guest.guard';
+import { authGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: "", 
     component: DefaultComponent, 
+    canActivate: [guestGuard],
     children: [{ path: "", component: LoginComponent }]
   },
   {
     path: "", 
-    component: MasterComponent, 
+    component: MasterComponent,
+    canActivate: [authGuard],
     children: [{ path: "todo", component: TodoComponent }]
   }
 ];

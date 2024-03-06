@@ -29,7 +29,7 @@
             <label for="description" class="form-label">Description</label>
             <textarea name="" rows="10" class="form-control"
               [class]="{'invalid': todoForm.get('desc')?.hasError('required') && todoForm.get('desc')?.touched, 'valid':todoForm.get('description')?.valid}"
-              placeholder="Description" formControlName="description"></textarea>
+              placeholder="Description" formControlName="desc"></textarea>
             @if (todoForm.get('desc')?.hasError('required') && todoForm.get('desc')?.touched) {
             <span class="form-error">Description is required.</span>
             }

@@ -23,9 +23,12 @@ export class AuthService {
     )
   }
 
-  onLogout(data: ILogin) {
-    return this.http.post(apiEndpoint.AuthEndpoint.logout, data).subscribe({
-      next: (response) => this.tokenSrv.removeToken()
-    })
+  onLogout() {
+    this.tokenSrv.removeToken();
+    // this.http.post(`${apiEndpoint.AuthEndpoint.logout}`, '').subscribe({
+    //   next: (response) => {
+    //     this.tokenSrv.removeToken();
+    //   },
+    // });
   }
 }
